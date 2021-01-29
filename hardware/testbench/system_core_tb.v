@@ -30,6 +30,9 @@ module system_tb;
 
    //iterator
    integer                i;
+   
+	wire [31:0]			   irq;
+	assign irq = 32'd0;
 
    //PWIRES
 
@@ -183,9 +186,9 @@ module system_tb;
 `endif               
 	       .clk           (clk),
 	       .reset         (reset),
-	       .trap          (trap)
+	       .trap          (trap),
+	       .irq			  (32'd0)
 	       );
-
 
    //instantiate the axi memory
 `ifdef USE_DDR

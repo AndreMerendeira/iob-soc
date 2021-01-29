@@ -1,5 +1,11 @@
 //add core test module in testbench
 
+    wire uart_interr;
+	//assign irq[3:0]=0;
+	//assign irq[4]=uart_interr;
+	//assign irq[31:5]=0;
+   	
+   	
    iob_uart uart_0_tb
      (
       .clk       (clk),
@@ -15,5 +21,7 @@
       .txd       (uart_rxd),
       .rxd       (uart_txd),
       .rts       (uart_cts),
-      .cts       (uart_rts)
+      .cts       (uart_rts),
+      
+      .interrupt (uart_interr)
       );

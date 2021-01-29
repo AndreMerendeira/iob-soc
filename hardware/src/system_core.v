@@ -61,7 +61,9 @@ module system
 `endif //  `ifdef USE_DDR
    input                    clk,
    input                    reset,
-   output                   trap
+   output                   trap,
+   
+   input [31:0]				irq
    );
 
    localparam ADDR_W=32;
@@ -86,6 +88,7 @@ module system
    // data cat bus
    wire [`REQ_W-1:0]         cpu_d_req;
    wire [`RESP_W-1:0]        cpu_d_resp;
+
    
    //instantiate the cpu
    iob_picorv32 cpu
@@ -101,7 +104,10 @@ module system
         
         //data bus
         .dbus_req(cpu_d_req),
-        .dbus_resp(cpu_d_resp)
+        .dbus_resp(cpu_d_resp),
+        
+        //IRQ
+        .irq(irq)
         );
 
 
